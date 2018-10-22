@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: spinnaker-demo-config
-  namespace: default
+  namespace: paas-cicd-management
 data:
   NEW_FEATURE: "true"
 
@@ -12,13 +12,13 @@ apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: spinnaker-demo
-  namespace: default
+  namespace: paas-cicd-management
   labels:
     source: demo
     stack: frontend
     app: spinnaker
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       source: demo
@@ -48,7 +48,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: spinnaker-demo
-  namespace: default
+  namespace: paas-cicd-management
 spec:
   selector:
     source: demo
